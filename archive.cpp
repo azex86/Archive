@@ -2,8 +2,6 @@
 namespace fs = std::filesystem;
 size_t getFileSize(string path)
 {
-    //return filesystem::file_size(path);
-    
     
     ifstream in(path);
     in.seekg(0,std::ios::end);

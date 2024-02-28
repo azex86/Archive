@@ -1,6 +1,17 @@
 #include "archive.hpp"
 
-
+int help()
+{
+    cout << " help message !\n\
+    Archive.exe [arg] [source] [destination]\
+args:\
+    -h --help : show this help message\
+    -v --verbose : enable print not usable\
+    -c --create : create an archive from [source] to [destination]\
+    -l --list : show the content of the archive\
+    -x --extract : extract the content of the archive([source]) to [destination]\
+                                [destination] should be a folder which will be created";
+}   
 
 
 enum Instruction
@@ -15,41 +26,6 @@ int main(int argc,char** argv)
 {
 
 
-    /* 
-        size_t size = 10000;
-        char* data = new char[size];
-
-        ofstream o("out");
-        cout << o.tellp() << endl;
-        o << size << endl << size << endl;
-        cout << o.tellp() << endl;
-        o.write(data, size);
-        cout << o.tellp() << endl;
-        o << size << endl;
-        cout << o.tellp() << endl;
-        o.close();
-
-        size_t size2 = 0, size3 = 0, size4 = 0;
-        ifstream in("out");
-        cout << in.tellg() << endl;
-        in >> size2 >> size4;
-        in.seekg(2, ios::cur);
-        cout << in.tellg() << endl;
-        char* data2 = new char[size2];
-        in.read(data2, size2);
-        cout << in.tellg() << endl;
-        in >> size3;
-        cout << in.tellg() << endl;
-        in.close();
-
-        int value = memcmp(data, data2, (size > size2) ? size2 : size);
-        return 0;
-    */
-        
-    create("D:/Plan_3D/Gaufrier_a_cire", "test.arch");
-    list("test.arch");
-    extract("test.arch", "testExtraction/");
-    return 0;
     bool verbose = false;
     string sourcePath = "";
     string destPath = "";
@@ -58,8 +34,9 @@ int main(int argc,char** argv)
     for(int i = 0;i<argc;i++)
     {
         string temp = argv[i];
-
-        if(temp == "--verbose" || temp == "-v")
+        if (temp == "--help" || temp == "-h")
+            return help();
+        else if(temp == "--verbose" || temp == "-v")
             verbose = true;
         else if(temp == "-x" || temp == "--extract")
             action = Extract;
@@ -73,7 +50,7 @@ int main(int argc,char** argv)
             destPath = argv[i];
         else
             {
-                cerr <<"Erreur argument not understood !" <<endl;
+                cerr <<"Erreur argument not understood ! : " <<temp <<endl;
                 return -1;
             }
             
@@ -99,8 +76,5 @@ int main(int argc,char** argv)
          <<e.what() <<endl
          <<"Closing the app ....." <<endl;
     }
-
-
-
     return 0;
 }
