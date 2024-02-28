@@ -1,0 +1,10 @@
+﻿################################################################################
+# Ce fichier .gitignore a été automatiquement créé par Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/Archive
+/Archive/x64/Debug
+/x64/Debug
+/testExtraction/Gaufrier_a_cire
+/out
+/test.arch
