@@ -21,7 +21,7 @@ string getFileName(string path)
         i2 = path.find_last_of("\\");
     size_t index = (i1!=string::npos && i2!=string::npos)?((i1 > i2) ? i1 : i2):((i1!=string::npos)?i1:i2);
     if (index == string::npos)
-            return path;
+        return path;
 
     return path.substr(index+1);
 }
