@@ -31,6 +31,28 @@ struct Fichier
     
 };
 
+/*
+        Quelques explication sur la mise en forme de l'archive sur le disque.
+            un objet Archive écris dans un fichier
+        ----------------------------
+        |   folderName          \n  |
+        |   nombre de fichiers  \n  |
+        |   nombres De dossiers \n  |
+        |---------------------------|
+        |   fileName            \n  |   -> nombreDeFichiers fois cette structure
+        |   fileSize            \n  |
+        |   data                    | -> les données du fichier  au format binaire soit fileSize octets 
+        |---------------------------|
+        |   ......................  |   -> on repète l'ensemble de la structure récusivement
+        |---------------------------|   -> nombreDeDossier fois la structure Archive
+
+    Notes:
+        le fichier est au format binaire
+        les données (string + int) sont écrites en texte terminé par '\n'
+        seule le contenu des fichiers est écrit en binaire pur sans '\n' à la fin 
+*/
+
+
 struct Archive
 {
     string folderName;
