@@ -4,6 +4,7 @@
 #include <vector>
 #include <filesystem>
 
+extern bool verbose;
 using namespace std;
 
 //retourne la taille du chier [path] en octets

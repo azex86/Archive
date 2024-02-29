@@ -11,8 +11,10 @@ args:\
     -l --list : show the content of the archive\
     -x --extract : extract the content of the archive([source]) to [destination]\
                                 [destination] should be a folder which will be created";
+    return 0;
 }   
 
+bool verbose = false;
 
 enum Instruction
 {
@@ -26,12 +28,12 @@ int main(int argc,char** argv)
 {
 
 
-    bool verbose = false;
     string sourcePath = "";
     string destPath = "";
     Instruction action = Instruction::None;
 
-    for(int i = 0;i<argc;i++)
+    //on interprète les arguments, on ignore le premier (chemin de l'exe)
+    for(int i = 1;i<argc;i++)
     {
         string temp = argv[i];
         if (temp == "--help" || temp == "-h")
